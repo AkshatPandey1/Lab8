@@ -51,7 +51,6 @@ public class CustomList extends ArrayAdapter<City> {
 
     public void addCity(City city){
         cities.add(city);
-        notifyDataSetChanged();
     }
 
     // Check if the city is already in the list
@@ -65,15 +64,7 @@ public class CustomList extends ArrayAdapter<City> {
     }
 
     // Remove the city from the list
-    public void removeCity(City city){
-        cities.remove(city);
-        notifyDataSetChanged();
+    public void deleteCity(Integer position) {
+        cities.remove(position);
     }
-
-    // Count the number of cities in the list
-    public int countCities(){
-        return cities.size();
-    }
-
-
 }

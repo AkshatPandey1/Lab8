@@ -2,6 +2,8 @@ package com.example.lab8;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 //import org.junit.Before;
@@ -12,12 +14,11 @@ import java.util.ArrayList;
 
 public class CustomListTest {
 
-    private static ArrayList<City> cityDataList;
     private static CustomList cityAdapter;
 
     @BeforeAll
     public static void setUp() {
-        cityDataList = new ArrayList<>();
+        ArrayList<City> cityDataList = new ArrayList<>();
         cityDataList.add(new City("Edmonton", "AB"));
         cityDataList.add(new City("Vancouver", "BC"));
         cityDataList.add(new City("Toronto", "ON"));
@@ -40,17 +41,17 @@ public class CustomListTest {
 
     @Test
     public void testIsCityInList() {
-        assertEquals(true, cityAdapter.isCityInList(new City("Edmonton", "AB")));
+        assertTrue(cityAdapter.isCityInList(new City("Edmonton", "AB")));
     }
 
     @Test
     public void testIsCityNotInList() {
-        assertEquals(false, cityAdapter.isCityInList(new City("Montreal", "QC")));
+        assertFalse(cityAdapter.isCityInList(new City("AP", "AP")));
     }
 
     @Test
     public void deleteCity() {
-        assertEquals("Edmonton", cityAdapter.getItem(0).getCityName());
+        cityAdapter.deleteCity(3);
+        assertEquals(7, cityAdapter.getCount());
     }
-
 }
