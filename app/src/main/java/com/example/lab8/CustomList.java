@@ -50,7 +50,30 @@ public class CustomList extends ArrayAdapter<City> {
     }
 
     public void addCity(City city){
-
+        cities.add(city);
+        notifyDataSetChanged();
     }
+
+    // Check if the city is already in the list
+    public boolean isCityInList(City city){
+        for(City c : cities){
+            if(c.getCityName().equals(city.getCityName())){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Remove the city from the list
+    public void removeCity(City city){
+        cities.remove(city);
+        notifyDataSetChanged();
+    }
+
+    // Count the number of cities in the list
+    public int countCities(){
+        return cities.size();
+    }
+
 
 }
